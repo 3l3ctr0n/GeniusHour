@@ -1,0 +1,32 @@
+import java.util.TimerTask;
+import java.util.Scanner;
+import java.util.Timer;
+
+public class Countdown {
+static int gap;
+static Timer counter;
+
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.print(" (input integers only) How many seconds? ");
+    String sec = sc.nextLine();
+    int delay = 1000;
+    int period = 1000;
+    counter = new Timer();
+    gap = Integer.parseInt(sec);
+    System.out.println(sec);
+    counter.scheduleAtFixedRate(new TimerTask() {
+
+
+        public void run() {
+            System.out.println(setGap());
+
+        }
+    }, delay, period);
+}
+private static final int setGap() {
+    if (gap == 1)
+        counter.cancel();
+    return --gap;
+}
+}
